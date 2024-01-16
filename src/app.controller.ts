@@ -6,9 +6,10 @@ import { AuthGuard } from '@nestjs/passport';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
+  @Get('books')
   @UseGuards(AuthGuard('bearer'))
-  getAllBooks(): any[] {
+  getAllBooks(@Body() anuthing: any): any[] {
+    console.log('anuthing', anuthing);
 	const books = this.appService.getAllBooks();
 	return books;
   }
